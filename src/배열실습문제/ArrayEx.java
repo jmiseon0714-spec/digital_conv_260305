@@ -63,7 +63,6 @@ public class ArrayEx {
         }
         System.out.println((long)((num1 * 10) + num2) * num3);
 
-
     }
 
 }
