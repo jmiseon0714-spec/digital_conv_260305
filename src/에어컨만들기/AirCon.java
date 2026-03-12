@@ -82,7 +82,7 @@ public class AirCon {
     }
 
     public void setWind(int wind) {
-        this.wind = wind;
+        wind = wind;
     }
 
     public void printAircon() {

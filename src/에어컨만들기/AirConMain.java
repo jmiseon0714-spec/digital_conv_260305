@@ -23,26 +23,26 @@ public class AirConMain {
             System.out.print("메뉴 선택 : ");
             int menu = sc.nextInt();
 
-            switch (menu) {
-                case 1:
-                    airCon1.setPower(true);
-                    break;
-                case 2:
-                    System.out.print("온도 설정값 입력 : ");
-                    int volume = sc.nextInt();
-                    airCon1.setTempSet();
-                    break;
-                case 3:
-                    airCon1.setTempNow();
-                case 4:
-                    airCon1.setCooler(true);
-                    break;
-                case 5:
-                    airCon1.setHeater(true);
-                    break;
-                case 6:
-                    System.out.print("바람 세기 입력 : ");
-                    airCon1.setWind();
+//            switch (menu) {
+//                case 1:
+//                    airCon1.setPower(true);
+//                    break;
+//                case 2:
+//                    System.out.print("온도 설정값 입력 : ");
+//                    int volume = sc.nextInt();
+//                    airCon1.setTempSet();
+//                    break;
+//                case 3:
+//                    airCon1.setTempNow();
+//                case 4:
+//                    airCon1.setCooler(true);
+//                    break;
+//                case 5:
+//                    airCon1.setHeater(true);
+//                    break;
+//                case 6:
+//                    System.out.print("바람 세기 입력 : ");
+//                    airCon1.setWind();
 
 
 
@@ -51,4 +51,4 @@ public class AirConMain {
 
         }
     }
-}
+
