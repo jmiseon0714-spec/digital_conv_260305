@@ -78,7 +78,9 @@ public class CarMain {
 
         // 매개변수 순서 주의: distance, speed, moveCnt, weatherWeight
         double totalTime = car.distanceTime(distance, car.speed, car.moveCnt(passCnt), weather);
-        System.out.printf("총 소요 시간 : %.2f시간\n", totalTime);
+        int h = (int) totalTime;                         // 정수 부분만 취해서 '시간' 추출
+        int m = (int) Math.round((totalTime - h) * 60);
+        System.out.printf("총 소요 시간 : %d시간 %d분\n", h, m);
 
         System.out.println("총 이동 횟수 : " + car.moveCnt(passCnt) + "회");
         System.out.println("============================");
