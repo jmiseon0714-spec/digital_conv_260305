@@ -33,43 +33,67 @@ public class CarMain {
         System.out.print("이동할 승객 수를 입력하세요 (1~100명) : ");
         int passCnt = sc.nextInt();
 
-        // 차량 종류 선택
-        System.out.print("차량 선택 [1]스포츠카 [2]승용차 [3]버스 : ");
-        int carChoice = sc.nextInt();
         Car car = null;
+        while (car == null) {
+            System.out.print("차량 선택 [1]스포츠카 [2]승용차 [3]버스 : ");
+            int carChoice = sc.nextInt();
 
-        switch (carChoice) {
-            case 1:
-                car = new SportCar("스포츠카");
-                break;
-            case 2:
-                car = new Sedan("승용차");
-                break;
-            case 3:
-                car = new Bus("버스");
-                break;
-            default:
-                System.out.println("차량을 잘못 선택하셨습니다.");
-                return;
+            switch (carChoice) {
+                case 1:
+                    car = new SportCar("스포츠카");
+                    break;
+                case 2:
+                    car = new Sedan("승용차");
+                    break;
+                case 3:
+                    car = new Bus("버스");
+                    break;
+                default:
+                    System.out.println("잘못된 선택입니다. 1~3 사이의 숫자를 입력해주세요.");
+            }
         }
 
-        // 부가기능 선택
-        System.out.print("부가기능을 사용하시겠습니까? [1]YES [2]NO : ");
-        boolean isMode = (sc.nextInt() == 1);
+
+        boolean isMode = false; // 루프 밖에서 사용할 변수 미리 선언
+
+        while (true) {
+            System.out.print("부가기능을 사용하시겠습니까? [1]YES [2]NO : ");
+            int modeChoice = sc.nextInt();
+
+            if (modeChoice == 1) {
+                isMode = true;
+                break;
+            } else if (modeChoice == 2) {
+                isMode = false;
+                break;
+            } else {
+                System.out.println("잘못된 입력입니다. 1번(YES) 또는 2번(NO)을 선택해주세요.");
+            }
+        }
+
         car.setMode(isMode);
 
-        //  날씨 선택
-        System.out.print("날씨 선택 [1]맑음 [2]비 [3]눈 : ");
-        int weatherInput = sc.nextInt();
-        double weather = 1.0; //
-        switch (weatherInput) {
-            case 2:
+
+        double weather = 1.0; // 기본값 설정
+
+        while (true) {
+            System.out.print("날씨 선택 [1]맑음 [2]비 [3]눈 : ");
+            int weatherInput = sc.nextInt();
+
+            if (weatherInput == 1) {
+                weather = 1.0;
+                break;
+            } else if (weatherInput == 2) {
                 weather = 1.2;
                 break;
-            case 3:
+            } else if (weatherInput == 3) {
                 weather = 1.4;
                 break;
+            } else {
+                System.out.println("잘못된 입력입니다. 1, 2, 3번 중에서 선택해주세요.");
+            }
         }
+
 
         // 결과 출력
         System.out.println("\n========= 이동 결과 =========");
