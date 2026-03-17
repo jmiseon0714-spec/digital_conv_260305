@@ -33,6 +33,7 @@ public class CarMain {
         System.out.print("이동할 승객 수를 입력하세요 (1~100명) : ");
         int passCnt = sc.nextInt();
 
+        // 차량 종류 선택
         Car car = null;
         while (car == null) {
             System.out.print("차량 선택 [1]스포츠카 [2]승용차 [3]버스 : ");
@@ -53,7 +54,7 @@ public class CarMain {
             }
         }
 
-
+        // 부가기능 선택
         boolean isMode = false; // 루프 밖에서 사용할 변수 미리 선언
 
         while (true) {
@@ -73,7 +74,7 @@ public class CarMain {
 
         car.setMode(isMode);
 
-
+        // 날씨 선택
         double weather = 1.0; // 기본값 설정
 
         while (true) {
