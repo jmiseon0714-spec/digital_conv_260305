@@ -8,7 +8,7 @@ public abstract class Car {
     protected int seat;  // 좌석 수
     protected String name;  // 차량 이름
 
-    public Car(int speed, double mileage, int tank, int seat, String name) {
+    public Car(int speed, double mileage, int tank, int seat, String name) { // 매개변수가 있는 생성자, 기본 생성자는 없음
         this.speed = speed;
         this.mileage = mileage;
         this.tank = tank;
@@ -66,8 +66,8 @@ public abstract class Car {
     // 주유 횟수 계산: ceil(총 연료 소모량 / 연료탱크 크기)
     public int refuel(double distance, int moveCnt) {
         double totalDistance = distance * moveCnt;
-        double totalFuelConsumption = totalDistance / this.mileage;
-        return (int) Math.ceil(totalFuelConsumption / this.tank);
+        double totalFuelConsumption = totalDistance / this.mileage; // 거리 / 연비
+        return (int) Math.ceil(totalFuelConsumption / this.tank);  // 연료 소모량 / 연료 탱크 크기
     }
     // 총 비용 계산 : 총 연료 소모량 × 2,000원
     public int cost(double distance, int moveCnt) {

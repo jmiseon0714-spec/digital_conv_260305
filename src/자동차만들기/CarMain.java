@@ -41,10 +41,10 @@ public class CarMain {
 
             switch (carChoice) {
                 case 1:
-                    car = new SportCar("스포츠카");
+                    car = new SportCar("포르쉐 911");
                     break;
                 case 2:
-                    car = new Sedan("승용차");
+                    car = new Sedan("G80");
                     break;
                 case 3:
                     car = new Bus("버스");
@@ -58,7 +58,7 @@ public class CarMain {
         boolean isMode = false; // 루프 밖에서 사용할 변수 미리 선언
 
         while (true) {
-            System.out.print("부가기능을 사용하시겠습니까? [1]YES [2]NO : ");
+            System.out.print("부가기능을 사용하시겠습니까? [1]ON [2]OFF : ");
             int modeChoice = sc.nextInt();
 
             if (modeChoice == 1) {
@@ -68,7 +68,7 @@ public class CarMain {
                 isMode = false;
                 break;
             } else {
-                System.out.println("잘못된 입력입니다. 1번(YES) 또는 2번(NO)을 선택해주세요.");
+                System.out.println("잘못된 입력입니다. 1번(ON) 또는 2번(OFF)을 선택해주세요.");
             }
         }
 
@@ -95,19 +95,57 @@ public class CarMain {
             }
         }
 
+        if (car instanceof AirCon) {
+            System.out.print(car.getName() + " 에어컨 [1]ON [2]OFF : ");
+            int input = sc.nextInt();
+            boolean on = (input == 1);
+            ((AirCon) car).setAirCon(on);
+        }
+
+        if (car instanceof Audio) {
+            System.out.print(car.getName() + " 오디오 [1]ON [2]OFF : ");
+            int input = sc.nextInt();
+            boolean on = (input == 1);
+            ((Audio) car).setAudio(on);
+        }
+
+        if (car instanceof AutoPilot) {
+            System.out.print(car.getName() + " 자율주행 [1]ON [2]OFF : ");
+            int input = sc.nextInt();
+            boolean on = (input == 1);
+            ((AutoPilot) car).setAutoPilot(on);
+        }
+
+        int air = sc.nextInt();
+        if (car instanceof AirCon) {
+            ((AirCon) car).setAirCon(air == 1);
+        }
+        if (car instanceof AutoPilot) {
+            ((AutoPilot) car).setAutoPilot(true);
+        }
+
 
         // 결과 출력
-        System.out.println("\n========= 이동 결과 =========");
+        System.out.println("=========" + car.getName() + "=========");
         System.out.println("총 비용 : " + car.cost(distance, car.moveCnt(passCnt)) + "원");
         System.out.println("주유 횟수 : " + car.refuel(distance, car.moveCnt(passCnt)) + "회");
 
         // 매개변수 순서 주의: distance, speed, moveCnt, weatherWeight
-        double totalTime = car.distanceTime(distance, car.speed, car.moveCnt(passCnt), weather);
+        double totalTime = car.distanceTime(distance, car.getSpeed(), car.moveCnt(passCnt), weather);
         int h = (int) totalTime;                         // 정수 부분만 취해서 '시간' 추출
         int m = (int) Math.round((totalTime - h) * 60);
         System.out.printf("총 소요 시간 : %d시간 %d분\n", h, m);
 
         System.out.println("총 이동 횟수 : " + car.moveCnt(passCnt) + "회");
         System.out.println("============================");
+
+        if (car instanceof Audio) {
+            boolean audio = ((Sedan) car).isAudioOn(); // 또는 공통 인터페이스로 개선 가능
+            System.out.println("오디오 : " + (audio ? "ON" : "OFF"));
+        }
+        if (car instanceof AutoPilot) {
+            boolean auto = ((Sedan) car).isAutoPilotOn();
+            System.out.println("자율주행 : " + (auto ? "ON" : "OFF"));
+        }
     }
 }
